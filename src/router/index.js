@@ -1,8 +1,8 @@
 import { def } from "@vue/shared";
 import { createRouter, createWebHashHistory } from "vue-router";
+
+import Welecome from "./../views/Welecome.vue";
 import Home from "./../components/Home.vue";
-import Login from "./../components/Login.vue";
-import Welecome from "./../components/Welecome.vue";
 const routes = [
   {
     name: "home",
@@ -15,12 +15,12 @@ const routes = [
         path: "/welecome",
         component: Welecome,
       },
-      {
-        name: "login",
-        path: "/login",
-        component: Login,
-      },
     ],
+  },
+  {
+    name: "login",
+    path: "/login",
+    component: () => import("./../views/Login.vue"),
   },
 ];
 

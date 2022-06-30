@@ -1,18 +1,20 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+// import store from "./store";
 import router from "./router";
-import axios from "axios";
+
+import request from "./utils/request";
+import storage from "./utils/storage";
 // 导入element-plus
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
-
-console.log("环境变量", import.meta.env);
+import api from "./api";
 import config from "./config";
+import store from "./store";
 
-console.log(config.baseApi);
-
-// axios.get(config.mockApi + "/login").then((res) => {
-//   console.log(res);
-// });
 const app = createApp(App);
-app.use(router).use(ElementPlus).mount("#app");
+
+app.config.globalProperties.$request = request;
+app.config.globalProperties.$storage = storage;
+app.config.globalProperties.$api = api;
+app.use(router).use(ElementPlus).use(store).mount("#app");

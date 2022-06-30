@@ -1,8 +1,53 @@
 <template>
-  <div>这是home页面</div>
-  <router-view></router-view>
+  <div class="basic-layout">
+    <div class="nav-side"></div>
+    <div class="content-right">
+      <div class="nav-top">
+        <div>面包屑</div>
+        <div>用户</div>
+      </div>
+      <div class="wrapper">
+        <router-view class="main-page"></router-view>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup></script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.basic-layout {
+  position: relative;
+  // 左侧
+  .nav-side {
+    position: fixed;
+    width: 200px;
+    height: 100vh;
+    background: #001529;
+    color: #fff;
+    overflow-y: auto;
+    transition: width 0.5s;
+  }
+  // 右侧
+  .content-right {
+    margin-left: 200px;
+    .nav-top {
+      height: 50px;
+      line-height: 50px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      padding: 0 20px;
+    }
+    .wrapper {
+      background: #eef0f3;
+      padding: 20px;
+      height: calc(100vh - 50px);
+      .main-page {
+        height: 100%;
+        background: #fff;
+      }
+    }
+  }
+}
+</style>
